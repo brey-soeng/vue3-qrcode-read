@@ -14,20 +14,34 @@
               Home
           </router-link>
          </el-menu-item>
-         <el-menu-item index="2">
-            <router-link to="/about">
-              about
-          </router-link>
-         </el-menu-item>
-         <el-menu-item index="3">
-            <router-link to="/qr-scanner">
+        <el-submenu index="2">
+            <template #title>Daily worked</template>
+            <el-menu-item index="2-1">
+              <router-link to="/sort-table-js">
+                 Sorttable js
+            </router-link>
+            </el-menu-item>
+            <el-menu-item index="2-2">
+               <router-link to="/qr-scanner">
               Scanner
           </router-link>
-         </el-menu-item>
-         <el-menu-item index="4">
-            <router-link to="/qr-upload">
-              upload QRCode
-          </router-link>
+            </el-menu-item>
+            <el-menu-item index="2-3">
+               <router-link to="/qr-upload">
+                   upload QRCode
+              </router-link>
+            </el-menu-item>
+            <el-submenu index="2-4">
+              <template #title>item four</template>
+              <el-menu-item index="2-4-1">item one</el-menu-item>
+              <el-menu-item index="2-4-2">item two</el-menu-item>
+              <el-menu-item index="2-4-3">item three</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+         <el-menu-item index="3">
+          <router-link to="/about">
+                   about
+              </router-link>
          </el-menu-item>
      </el-menu>
     </el-header>
@@ -61,19 +75,8 @@ export default {
    background: #fff;
    border-bottom: 1px solid #e4e4e4;
 }
-ul.qr-menu {
-  padding:0px;
-  margin:0px;
-  list-style-type: none;
-}
-ul.qr-menu li {
-  padding:15px 0px;
-  margin:0px 15px 0px 0px;
-  float: left;
-  text-align: center;
- 
-}
-ul.qr-menu li a {
+.el-menu-demo  .el-menu-item a {
   text-decoration: none;
 }
+
 </style>
