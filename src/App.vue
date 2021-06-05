@@ -18,25 +18,27 @@
             <template #title>Daily worked</template>
             <el-menu-item index="2-1">
               <router-link to="/sort-table-js">
-                 Sorttable js
+                 Sorttable
             </router-link>
             </el-menu-item>
             <el-menu-item index="2-2">
-               <router-link to="/qr-scanner">
-              Scanner
-          </router-link>
+               <router-link to="/qr-scanner"> Scanner</router-link>
             </el-menu-item>
             <el-menu-item index="2-3">
-               <router-link to="/qr-upload">
-                   upload QRCode
-              </router-link>
+               <router-link to="/qr-upload"> upload QRCode </router-link>
             </el-menu-item>
-            <el-submenu index="2-4">
+            <el-menu-item index="2-4">
+               <router-link to="/table-drag-drop"> Table Drag Drop </router-link>
+            </el-menu-item>
+            <el-menu-item index="2-5">
+               <router-link to="/clipboard"> Cliboard</router-link>
+            </el-menu-item>
+            <!-- <el-submenu index="2-4">
               <template #title>item four</template>
               <el-menu-item index="2-4-1">item one</el-menu-item>
               <el-menu-item index="2-4-2">item two</el-menu-item>
               <el-menu-item index="2-4-3">item three</el-menu-item>
-            </el-submenu>
+            </el-submenu> -->
           </el-submenu>
          <el-menu-item index="3">
           <router-link to="/about">

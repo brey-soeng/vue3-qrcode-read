@@ -4,30 +4,31 @@
         <draggable
         :persons="persons"
         :disabled="!enabled"
+        item-key="name"
         class="list-group"
         ghost-class="ghost"
+        v-bind="dragOptions"
         :move="checkMove"
         @start="dragging = true"
         @end="dragging = false"
       >
-        <el-card 
-            class="box-card"
-            v-for="(person ,index) in persons"
-            :key="index"  >
-            <div  class="text item">
-                <h3>{{person.name}}</h3>
-                <div>{{person.description}}</div>
+      <transition-group type="transition" name="flip-list">
+       <el-card  class="box-card" v-for="element in persons"  :key="element.name">
+            <div class="text item list-group-item"  :class="{ 'not-draggable': !enabled }">
+                <h3>{{element .name}}</h3>
+                <div>{{element .description}}</div>
             </div>
-            </el-card>
-        </draggable>
-        
+       </el-card>
+      </transition-group>
+    </draggable>
     </div>
 </template>
 <script>
-import draggable from "vuedraggable";
-export default {
+  import { defineComponent } from 'vue'
+  import { VueDraggableNext } from 'vue-draggable-next'
+export default defineComponent({
     name:'SortTableJs',
-    components: {draggable : draggable},
+    components: {draggable : VueDraggableNext},
     data() {
         return {
             dragging: false,
@@ -59,6 +60,14 @@ export default {
 computed: {
     draggingInfo() {
       return this.dragging ? "under drag" : "";
+    },
+    dragOptions() {
+      return {
+        animation: 0,
+        group: 'description',
+        disabled: false,
+        ghostClass: 'ghost',
+      }
     }
   },
     methods: {
@@ -66,18 +75,21 @@ computed: {
             window.console.log("Future index: " + e.draggedContext.futureIndex);
         }
     }
-}
+})
 </script>
-<style>
-  .text {
-    font-size: 14px;
-  }
-
-  .box-card {
-    width: 480px;
-    margin: 10px 0px;
-  }
-  .drag-class {
-      border:1px solid red;
-  }
+<style scoped>
+.box-card {
+    margin:10px 0px;
+    cursor: pointer;
+}
+.buttons {
+  margin-top: 35px;
+}
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
+}
+.not-draggable {
+  cursor: no-drop;
+}
 </style>
